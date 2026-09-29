@@ -179,6 +179,27 @@ void cariMobil(){
     }
 }
 
+void tampilkanMobilTersedia(){
+    bool ketemu = false;
+
+    cout << "=== MOBIL TERSEDIA ===" << endl;
+    for (int i = 0; i < jumlahMobil; i++){
+        if (!daftarMobil[i].disewa){
+            cout << "ID: " << daftarMobil[i].id
+                 << ", Nama: " << daftarMobil[i].nama
+                 << ", Model: " << daftarMobil[i].model
+                 << ", Tahun: " << daftarMobil[i].year
+                 << ", Kursi: " << daftarMobil[i].kursi
+                 << ", Harga: Rp" << daftarMobil[i].price << "/hari"
+                 << endl;
+            ketemu = true;
+        }
+    }
+
+    if (!ketemu)
+        cout << "Tidak ada mobil tersedia." << endl;
+}
+
 void detailMobil(){
     string idCari;
     int idx = -1;
@@ -366,6 +387,7 @@ void menuPenyewa(){
         cout << "1. Cari Mobil" << endl;
         cout << "2. Detail Mobil" << endl;
         cout << "3. Sewa Mobil" << endl;
+        cout << "4. Tampilkan Mobil Tersedia" << endl;
         cout << "0. Logout" << endl;
         cout << "Pilih Opsi: ";
         cin >> pilihan;
@@ -379,6 +401,9 @@ void menuPenyewa(){
                 break;
             case 3:
                 sewaMobil();
+                break;
+            case 4:
+                tampilkanMobilTersedia();
                 break;
             case 0:
                 userAktif = -1;
